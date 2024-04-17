@@ -65,40 +65,87 @@ header {
   height: 20px;
   margin-left: 10px;
 }
-.navigate-container{
-    width:60%;
-    height: 5vh;
-    margin: 3% auto;
-    display: flex;
-    justify-content: space-around;
+.navigate-container {
+  width: 60%;
+  height: 5vh;
+  margin: 3% auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+}
+[class*="navigate-container__button"] {
+  width: 45%;
+  height: 80%;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+}
+.navigate-container__button_enabled {
+  background-color: #aaa;
+}
+.portfolio-container {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.portfolio-container__link {
+  width: 46%;
+  margin: 2%;
+}
+.portfolio-container__image {
+  width: 100%;
+  border-radius: 20px;
+}
+footer {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 500px) {
+  .profile-container {
+    width:80%;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: white;
-    border-radius: 20px;
-}
-[class*="navigate-container__button"]{
-    width: 45%;
-    height: 80%;
-    border:none;
-    border-radius: 10px;
-    background-color: white;
-}
-.navigate-container__button_enabled{
-    background-color: #aaa;
-}
-.portfolio-container{
-    width:60%;
-    display: flex;
-    flex-wrap:wrap;
-    margin:0 auto;
-}
-.portfolio-container__link{
-    width:46%;
-    margin:2%;
-}
-.portfolio-container__image{
-    width:100%;
-    border-radius: 20px;
-}
-footer{
+  }
+  .profile-container__img {
+    margin: 0;
+    width: 50%;
+    height: 50%;
+  }
+  .profile-container__details {
     text-align: center;
+  }
+  .profile-container__details a{
+    font-size: 40px;
+  }
+  .profile-container__icons {
+    margin: 0 10px;
+  }
+  .profile-experience{
+    width: 80%;
+  }
+  .profile-experience div{
+    margin:0 10px;
+    font-size:14px;
+  }
+  .profile-buttons{
+    width: 80%;
+  }
+  .navigate-container{
+    width: 80%;
+  }
+  .portfolio-container{
+    width: 80%;
+  }
+  .portfolio-container__link {
+    width: 100%;
+  }
+  footer{
+    font-size: 14px;
+  }
 }
