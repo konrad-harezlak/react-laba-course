@@ -1,12 +1,43 @@
+[data-theme="light"] {
+  --color-bg: #ddd;
+  --color-fg: #000000;
+}
+
+[data-theme="dark"] {
+  --color-bg: #333;
+  --color-fg: #ffffff;
+}
 body {
-  background-color: #eee;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  min-height: 100vh;
 }
 header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.theme-button {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 2%;
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+  transition: 0.8s;
+  cursor: pointer;
+  background-color: var(--color-bg);
+}
+path{
+    background-color: white;    
+}
+.theme-button:hover{
+    width:50px;
+    height: 50px;
 }
 .profile-container {
   display: flex;
@@ -73,11 +104,11 @@ header {
   justify-content: space-around;
   align-items: center;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 [class*="navigate-container__button"] {
   width: 45%;
-  height: 80%;
+  height: 75%;
   border: none;
   border-radius: 10px;
   background-color: white;
@@ -97,7 +128,7 @@ header {
 }
 .portfolio-container__image {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 footer {
   height: 50px;
@@ -106,8 +137,12 @@ footer {
   align-items: center;
 }
 @media only screen and (max-width: 500px) {
+  .theme-button {
+    top: 1%;
+  }
   .profile-container {
-    width:80%;
+    margin-top: 15%;
+    width: 80%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -120,32 +155,32 @@ footer {
   .profile-container__details {
     text-align: center;
   }
-  .profile-container__details a{
+  .profile-container__details a {
     font-size: 40px;
   }
   .profile-container__icons {
     margin: 0 10px;
   }
-  .profile-experience{
+  .profile-experience {
     width: 80%;
   }
-  .profile-experience div{
-    margin:0 10px;
-    font-size:14px;
+  .profile-experience div {
+    margin: 0 10px;
+    font-size: 14px;
   }
-  .profile-buttons{
+  .profile-buttons {
     width: 80%;
   }
-  .navigate-container{
+  .navigate-container {
     width: 80%;
   }
-  .portfolio-container{
+  .portfolio-container {
     width: 80%;
   }
   .portfolio-container__link {
     width: 100%;
   }
-  footer{
+  footer {
     font-size: 14px;
   }
 }

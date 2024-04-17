@@ -8,6 +8,13 @@
   </head>
   <body>
     <header>
+      <button class="theme-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path
+            d="M448 256c0-106-86-192-192-192V448c106 0 192-86 192-192zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"
+          />
+        </svg>
+      </button>
       <section class="profile-container">
         <img src="./img/portret.jpg" class="profile-container__img" />
         <div class="profile-container__details">
@@ -58,25 +65,43 @@
         <button class="navigate-container__button">Skills</button>
       </nav>
       <section class="portfolio-container">
-        <a class="portfolio-container__link" href="https://calendar-frontend-brl8.onrender.com">
+        <a
+          class="portfolio-container__link"
+          href="https://calendar-frontend-brl8.onrender.com"
+        >
           <img class="portfolio-container__image" src="./img/calendar.png" />
         </a>
-        <a class="portfolio-container__link" href="https://task-manager-frontend-2l7a.onrender.com">
+        <a
+          class="portfolio-container__link"
+          href="https://task-manager-frontend-2l7a.onrender.com"
+        >
           <img class="portfolio-container__image" src="./img/task-list.png" />
         </a>
-        <a class="portfolio-container__link" href="https://blog-bootstrap.netlify.app">
+        <a
+          class="portfolio-container__link"
+          href="https://blog-bootstrap.netlify.app"
+        >
           <img class="portfolio-container__image" src="./img/bootstrap.png" />
         </a>
-        <a class="portfolio-container__link" href="https://simple-portfolio-hary.netlify.app">
+        <a
+          class="portfolio-container__link"
+          href="https://simple-portfolio-hary.netlify.app"
+        >
           <img class="portfolio-container__image" src="./img/portfolio.png" />
         </a>
-        <a class="portfolio-container__link" href="https://bpu-koncept.netlify.app">
+        <a
+          class="portfolio-container__link"
+          href="https://bpu-koncept.netlify.app"
+        >
           <img
             class="portfolio-container__image"
             src="./img/architecture.png"
           />
         </a>
-        <a class="portfolio-container__link" href="https://bussines-card-z31y.onrender.com">
+        <a
+          class="portfolio-container__link"
+          href="https://bussines-card-z31y.onrender.com"
+        >
           <img
             class="portfolio-container__image"
             src="./img/bussines-card.png"
@@ -85,5 +110,56 @@
       </section>
     </main>
     <footer>© Konrad Harężlak. 2024 All rigths reserved</footer>
+
+    <script>
+      function calculateSettingAsThemeString({
+        localStorageTheme,
+        systemSettingDark,
+      }) {
+        if (localStorageTheme !== null) {
+          return localStorageTheme;
+        }
+
+        if (systemSettingDark.matches) {
+          return "dark";
+        }
+
+        return "light";
+      }
+
+      function updateThemeOnHtmlEl({ theme }) {
+        document.querySelector("html").setAttribute("data-theme", theme);
+      }
+
+      function setPathColor(theme) {
+        const path = document.querySelector("path");
+        if (theme === "dark") {
+          path.setAttribute("fill", "#ddd");
+        } else {
+          path.setAttribute("fill", "#333");
+        }
+      }
+
+      const button = document.getElementsByClassName("theme-button")[0];
+      const localStorageTheme = localStorage.getItem("theme");
+      const systemSettingDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      );
+      let currentThemeSetting = calculateSettingAsThemeString({
+        localStorageTheme,
+        systemSettingDark,
+      });
+      updateThemeOnHtmlEl({ theme: currentThemeSetting });
+      setPathColor(currentThemeSetting);
+      button.addEventListener("click", (event) => {
+        const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
+
+        localStorage.setItem("theme", newTheme);
+        updateThemeOnHtmlEl({ theme: newTheme });
+
+        currentThemeSetting = newTheme;
+        setPathColor(currentThemeSetting);
+      });
+    </script>
   </body>
 </html>
