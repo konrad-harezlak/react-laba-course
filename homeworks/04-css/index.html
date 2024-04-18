@@ -8,7 +8,7 @@
   </head>
   <body>
     <header>
-      <button class="theme-button">
+      <button class="header__theme-button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path
             d="M448 256c0-106-86-192-192-192V448c106 0 192-86 192-192zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"
@@ -20,10 +20,10 @@
         <div class="profile-container__details">
           <h1>Konrad Harężlak</h1>
           <p>Frontend/Fullstack Developer</p>
-          <a href="https://github.com/konrad-harezlak"
+          <a class="profile-container__details__link" href="https://github.com/konrad-harezlak"
             ><img src="./img/github.svg" class="profile-container__icons"
           /></a>
-          <a href="https://www.linkedin.com/in/konradharezlak/"
+          <a class="profile-container__details__link" href="https://www.linkedin.com/in/konradharezlak/"
             ><img src="./img/linkedin.svg" class="profile-container__icons"
           /></a>
         </div>
@@ -140,18 +140,19 @@
         }
       }
 
-      const button = document.getElementsByClassName("theme-button")[0];
+      const btnTheme = document.getElementsByClassName("header__theme-button")[0];
       const localStorageTheme = localStorage.getItem("theme");
       const systemSettingDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
       );
+    
       let currentThemeSetting = calculateSettingAsThemeString({
         localStorageTheme,
         systemSettingDark,
       });
       updateThemeOnHtmlEl({ theme: currentThemeSetting });
       setPathColor(currentThemeSetting);
-      button.addEventListener("click", (event) => {
+      btnTheme.addEventListener("click", (event) => {
         const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
 
         localStorage.setItem("theme", newTheme);
@@ -160,6 +161,7 @@
         currentThemeSetting = newTheme;
         setPathColor(currentThemeSetting);
       });
+     
     </script>
   </body>
 </html>
