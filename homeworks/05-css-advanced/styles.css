@@ -1,0 +1,256 @@
+[data-theme="light"] {
+  --color-bg: #ddd;
+  --color-fg: #000000;
+}
+
+[data-theme="dark"] {
+  --color-bg: #333;
+  --color-fg: #ffffff;
+}
+@keyframes rainbow {
+  0% {
+    border-color: red;
+  }
+  14.28% {
+    border-color: orange;
+  }
+  28.56% {
+    border-color: yellow;
+  }
+  42.84% {
+    border-color: green;
+  }
+  57.12% {
+    border-color: blue;
+  }
+  71.4% {
+    border-color: indigo;
+  }
+  85.68% {
+    border-color: violet;
+  }
+  100% {
+    border-color: red;
+  }
+}
+
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  min-height: 100vh;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.header__theme-button {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 2%;
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+  transition: 0.8s;
+  cursor: pointer;
+  background-color: var(--color-bg);
+}
+
+.header__theme-button:hover {
+  width: 50px;
+  height: 50px;
+}
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 5%;
+  justify-content: center;
+}
+.profile-container__img {
+  height: 150px;
+  border-radius: 75px;
+  border: 2px solid #ff0;
+  margin-right: 20px;
+}
+.profile-container__details {
+  margin-top: 10px;
+}
+.profile-container__details__link {
+  font-size: 40px;
+}
+.profile-container__icons {
+  height: 35px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-experience {
+  display: flex;
+  width: 60%;
+  margin: 2% auto;
+  text-align: center;
+  justify-content: space-around;
+}
+.profile-buttons {
+  display: flex;
+  width: 50%;
+  margin: 2% auto;
+  justify-content: space-around;
+  height: 200%;
+}
+.profile-buttons__button-contact,
+.profile-buttons__button-cv {
+  width: 45%;
+  border-radius: 10px;
+  margin: 0 auto;
+  border: none;
+}
+.profile-buttons__button-contact {
+  background-color: white;
+}
+.profile-buttons__button-cv {
+  background: #fbd144;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.profile-buttons__icons {
+  height: 20px;
+  margin-left: 10px;
+}
+.navigate-container {
+  width: 60%;
+  height: 5vh;
+  margin: 3% auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+}
+[class*="navigate-container__button"] {
+  width: 45%;
+  height: 75%;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+}
+.navigate-container__button_enabled {
+  background-color: #aaa;
+}
+.portfolio-container {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.portfolio-container__link {
+  width: 46%;
+  margin: 2%;
+  transition: 0.3s;
+}
+.portfolio-container__link:hover {
+  width: 50%;
+  margin: 0;
+}
+.portfolio-container__image {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid var(--color-fg);
+}
+.portfolio-container__image:hover {
+  border: 1px solid white;
+  animation: rainbow 7s infinite;
+}
+footer {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__scroll-button {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+@media only screen and (max-width: 1024px) {
+  .profile-container,
+  .profile-experience,
+  .profile-buttons,
+  .navigate-container,
+  .portfolio-container {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .header__theme-button {
+    top: 1%;
+  }
+  .profile-container {
+    margin-top: 15%;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-container__img {
+    margin: 0;
+    width: 30%;
+    height: 30%;
+  }
+  .profile-container__details {
+    text-align: center;
+  }
+  .profile-container__details__link {
+    font-size: 40px;
+  }
+  .profile-container__icons {
+    margin: 0 10px;
+  }
+  .profile-experience {
+    width: 80%;
+  }
+  .profile-experience div {
+    margin: 0 10px;
+    font-size: 14px;
+  }
+  .profile-buttons {
+    width: 80%;
+  }
+  .navigate-container {
+    width: 80%;
+  }
+  .portfolio-container {
+    width: 80%;
+  }
+  .portfolio-container__link {
+    width: 100%;
+  }
+  footer {
+    font-size: 14px;
+  }
+  .footer__scroll-button {
+    display: block;
+    position: fixed;
+    bottom: 3px;
+    right: 3px;
+    border: 1px solid gray;
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+  }
+  .footer__scroll-button__img {
+    height: 30px;
+  }
+}
