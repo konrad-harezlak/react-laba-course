@@ -20,10 +20,14 @@
         <div class="profile-container__details">
           <h1>Konrad Harężlak</h1>
           <p>Frontend/Fullstack Developer</p>
-          <a class="profile-container__details__link" href="https://github.com/konrad-harezlak"
+          <a
+            class="profile-container__details__link"
+            href="https://github.com/konrad-harezlak"
             ><img src="./img/github.svg" class="profile-container__icons"
           /></a>
-          <a class="profile-container__details__link" href="https://www.linkedin.com/in/konradharezlak/"
+          <a
+            class="profile-container__details__link"
+            href="https://www.linkedin.com/in/konradharezlak/"
             ><img src="./img/linkedin.svg" class="profile-container__icons"
           /></a>
         </div>
@@ -109,7 +113,16 @@
         </a>
       </section>
     </main>
-    <footer>© Konrad Harężlak. 2024 All rigths reserved</footer>
+    <footer>
+      © Konrad Harężlak. 2024 All rigths reserved
+      <button class="footer__scroll-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+          <path
+            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+          />
+        </svg>
+      </button>
+    </footer>
 
     <script>
       function calculateSettingAsThemeString({
@@ -132,20 +145,28 @@
       }
 
       function setPathColor(theme) {
-        const path = document.querySelector("path");
+        const pathTheme = document.querySelector("path");
+        const pathScroll = document.querySelectorAll("path")[1];
         if (theme === "dark") {
-          path.setAttribute("fill", "#ddd");
+          pathTheme.setAttribute("fill", "#ddd");
+          pathScroll.setAttribute("fill", "#ddd");
         } else {
-          path.setAttribute("fill", "#333");
+          pathTheme.setAttribute("fill", "#333");
+          pathScroll.setAttribute("fill", "#333");
         }
       }
 
-      const btnTheme = document.getElementsByClassName("header__theme-button")[0];
+      const btnTheme = document.getElementsByClassName(
+        "header__theme-button"
+      )[0];
       const localStorageTheme = localStorage.getItem("theme");
       const systemSettingDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
       );
-    
+      const btnScroll = document.getElementsByClassName(
+        "footer__scroll-button"
+      )[0];
+
       let currentThemeSetting = calculateSettingAsThemeString({
         localStorageTheme,
         systemSettingDark,
@@ -161,7 +182,26 @@
         currentThemeSetting = newTheme;
         setPathColor(currentThemeSetting);
       });
-     
+
+      btnScroll.addEventListener("click", (event) => {
+        window.scrollTo(0, 0);
+      });
+      const btnContacts = document.querySelectorAll(
+        ".profile-container__icons"
+      );
+
+      function animateButton(event) {
+        event.target.style.transform = "scale(1.1)";
+      }
+
+      function resetButton(event) {
+        event.target.style.transform = "scale(1)";
+      }
+
+      btnContacts.forEach((btnContact) => {
+        btnContact.addEventListener("mouseenter", animateButton);
+        btnContact.addEventListener("mouseleave", resetButton);
+      });
     </script>
   </body>
 </html>

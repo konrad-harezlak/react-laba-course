@@ -7,6 +7,33 @@
   --color-bg: #333;
   --color-fg: #ffffff;
 }
+@keyframes rainbow {
+  0% {
+    border-color: red;
+  }
+  14.28% {
+    border-color: orange;
+  }
+  28.56% {
+    border-color: yellow;
+  }
+  42.84% {
+    border-color: green;
+  }
+  57.12% {
+    border-color: blue;
+  }
+  71.4% {
+    border-color: indigo;
+  }
+  85.68% {
+    border-color: violet;
+  }
+  100% {
+    border-color: red;
+  }
+}
+
 body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -33,9 +60,9 @@ header {
   background-color: var(--color-bg);
 }
 
-.header__theme-button:hover{
-    width:50px;
-    height: 50px;
+.header__theme-button:hover {
+  width: 50px;
+  height: 50px;
 }
 .profile-container {
   display: flex;
@@ -50,19 +77,20 @@ header {
   border-radius: 75px;
   border: 2px solid #ff0;
   margin-right: 20px;
-
 }
 .profile-container__details {
   margin-top: 10px;
 }
-.profile-container__details__link{
+.profile-container__details__link {
   font-size: 40px;
 }
 .profile-container__icons {
   height: 35px;
-  margin:0 5px;
-  cursor:pointer;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
+
 .profile-experience {
   display: flex;
   width: 60%;
@@ -127,10 +155,20 @@ header {
 .portfolio-container__link {
   width: 46%;
   margin: 2%;
+  transition: 0.3s;
+}
+.portfolio-container__link:hover {
+  width: 50%;
+  margin: 0;
 }
 .portfolio-container__image {
   width: 100%;
   border-radius: 15px;
+  border: 1px solid var(--color-fg);
+}
+.portfolio-container__image:hover {
+  border: 1px solid white;
+  animation: rainbow 7s infinite;
 }
 footer {
   height: 50px;
@@ -139,8 +177,23 @@ footer {
   align-items: center;
 }
 
+.footer__scroll-button {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+@media only screen and (max-width: 1024px) {
+  .profile-container,
+  .profile-experience,
+  .profile-buttons,
+  .navigate-container,
+  .portfolio-container {
+    width: 80%;
+  }
+}
 @media only screen and (max-width: 600px) {
-  .theme-button {
+  .header__theme-button {
     top: 1%;
   }
   .profile-container {
@@ -152,13 +205,13 @@ footer {
   }
   .profile-container__img {
     margin: 0;
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 30%;
   }
   .profile-container__details {
     text-align: center;
   }
-  .profile-container__details__link{
+  .profile-container__details__link {
     font-size: 40px;
   }
   .profile-container__icons {
@@ -186,5 +239,18 @@ footer {
   footer {
     font-size: 14px;
   }
- 
+  .footer__scroll-button {
+    display: block;
+    position: fixed;
+    bottom: 3px;
+    right: 3px;
+    border: 1px solid gray;
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+  }
+  .footer__scroll-button__img {
+    height: 30px;
+  }
 }
